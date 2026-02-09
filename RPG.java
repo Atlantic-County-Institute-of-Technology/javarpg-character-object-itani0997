@@ -62,7 +62,7 @@ public class RPG {
     public boolean isAlive() {
         return hitPoints > 0;
     }
-
+    
     public String toString() {
         String chara = name.toUpperCase() + " " + "(Level " + level + " " + characterType + ")\n";
         chara += "HP: " + hitPoints + " | AC: " + armorClass + "\n";
