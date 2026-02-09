@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class RPG {
     private String name;
     private String characterType;
@@ -13,10 +14,9 @@ public class RPG {
         this.level = level;
         this.characterType = characterType;
         this.dice = new Dice();
-
-
+        
         this.hitPoints = 1;
-        this.armorClass = 10;
+        this.armorClass = 0;  // Changed from 10 to 0 to match your friend
         STR = DEX = INT = CON = WIS = CHA = 10;
     }
 
@@ -38,24 +38,15 @@ public class RPG {
         armorClass = 10 + getPrimaryAbilityModifier();
     }
 
+    // EXACTLY your friend's rollStat method:
     public int rollStat() {
-
-        Dice temp = new Dice();
-        temp.addDice(4, 6);
-        temp.rollAll();
-
-
-        int[] rolls = new int[4];
-        int total = 0;
-        int lowest = 7;
-
-        for (int i = 0; i < 4; i++) {
-            rolls[i] = temp.getDieValue(i);
-            total += rolls[i];
-            if (rolls[i] < lowest) lowest = rolls[i];
-        }
-
-        return total - lowest;
+        dice.addDice(4, 6);
+        dice.rollAll();
+        dice.sortDice();
+        dice.removeDie(0);
+        int val = dice.getAllValues();
+        dice.clear();
+        return val;
     }
 
     public void rollStats() {
@@ -73,16 +64,16 @@ public class RPG {
         return hitPoints > 0;
     }
 
+    // toString using your friend's exact format:
     public String toString() {
-        return String.format(
-                "\tCharacter: %s (Level %d %s)\n" +
-                        "\tHP: %d | AC: %d\n" +
-                        "\tSTR: %d (+%d) | DEX: %d (+%d) | CON: %d (+%d)\n" +
-                        "\tINT: %d (+%d) | WIS: %d (+%d) | CHA: %d (+%d)",
-                name, level, characterType, hitPoints, armorClass,
-                STR, getAbilityModifier(STR), DEX, getAbilityModifier(DEX),
-                CON, getAbilityModifier(CON), INT, getAbilityModifier(INT),
-                WIS, getAbilityModifier(WIS), CHA, getAbilityModifier(CHA)
-        );
+        String chara = name.toUpperCase() + " " + "(Level " + level + " " + characterType + ")\n";
+        chara += "HP: " + hitPoints + " | AC: " + armorClass + "\n";
+        chara += "STR: " + STR + " (+" + getAbilityModifier(STR) + 
+                ") | DEX: " + DEX + " (+" + getAbilityModifier(DEX) + 
+                ") | CON: " + CON + " (+" + getAbilityModifier(CON) + ")\n";
+        chara += "INT: " + INT + " (+" + getAbilityModifier(INT) + 
+                ") | WIS: " + WIS + " (+" + getAbilityModifier(WIS) + 
+                ") | CHA: " + CHA + " (+" + getAbilityModifier(CHA) + ")";
+        return chara;
     }
 }
