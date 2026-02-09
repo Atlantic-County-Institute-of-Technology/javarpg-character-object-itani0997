@@ -1,9 +1,8 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Java RPG Character Test");
-
-        RPG character = new RPG("Adventurer", 1, "melee");
+        RPG character = new RPG("TestCharacter", 1, "melee");
         character.rollStats();
         System.out.println(character);
+        System.out.println("Alive: " + character.isAlive());
     }
 }
