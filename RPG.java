@@ -16,7 +16,7 @@ public class RPG {
         this.dice = new Dice();
         
         this.hitPoints = 1;
-        this.armorClass = 0;  // Changed from 10 to 0 to match your friend
+        this.armorClass = 0;
         STR = DEX = INT = CON = WIS = CHA = 10;
     }
 
@@ -38,7 +38,6 @@ public class RPG {
         armorClass = 10 + getPrimaryAbilityModifier();
     }
 
-    // EXACTLY your friend's rollStat method:
     public int rollStat() {
         dice.addDice(4, 6);
         dice.rollAll();
@@ -64,7 +63,6 @@ public class RPG {
         return hitPoints > 0;
     }
 
-    // toString using your friend's exact format:
     public String toString() {
         String chara = name.toUpperCase() + " " + "(Level " + level + " " + characterType + ")\n";
         chara += "HP: " + hitPoints + " | AC: " + armorClass + "\n";
