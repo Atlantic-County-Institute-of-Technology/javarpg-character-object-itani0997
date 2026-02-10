@@ -1,8 +1,3 @@
-// Dice.java
-// @description: A class that handles multiple dice of any number of sides using an arraylist
-// @author: pcostjr
-// created: 1.7.2026
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
