@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class RPG {
     private String name;
     private String characterType;
@@ -14,7 +13,7 @@ public class RPG {
         this.level = level;
         this.characterType = characterType;
         this.dice = new Dice();
-        
+
         this.hitPoints = 1;
         this.armorClass = 0;
         STR = DEX = INT = CON = WIS = CHA = 10;
@@ -62,15 +61,15 @@ public class RPG {
     public boolean isAlive() {
         return hitPoints > 0;
     }
-    
+
     public String toString() {
         String chara = name.toUpperCase() + " " + "(Level " + level + " " + characterType + ")\n";
         chara += "HP: " + hitPoints + " | AC: " + armorClass + "\n";
-        chara += "STR: " + STR + " (+" + getAbilityModifier(STR) + 
-                ") | DEX: " + DEX + " (+" + getAbilityModifier(DEX) + 
+        chara += "STR: " + STR + " (+" + getAbilityModifier(STR) +
+                ") | DEX: " + DEX + " (+" + getAbilityModifier(DEX) +
                 ") | CON: " + CON + " (+" + getAbilityModifier(CON) + ")\n";
-        chara += "INT: " + INT + " (+" + getAbilityModifier(INT) + 
-                ") | WIS: " + WIS + " (+" + getAbilityModifier(WIS) + 
+        chara += "INT: " + INT + " (+" + getAbilityModifier(INT) +
+                ") | WIS: " + WIS + " (+" + getAbilityModifier(WIS) +
                 ") | CHA: " + CHA + " (+" + getAbilityModifier(CHA) + ")";
         return chara;
     }
